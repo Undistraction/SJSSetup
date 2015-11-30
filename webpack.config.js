@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
+require('es6-promise').polyfill();
 
 const PATHS = {
   app: path.join(__dirname, 'app'),
