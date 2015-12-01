@@ -40,7 +40,9 @@ var config = {
   },
 
   sassLoader: {
-    includePaths: [path.join(node_dir, 'normalize-scss', 'sass'), path.join(node_dir, 'normalize-scss', 'node_modules', 'support-for', 'sass')]
+    includePaths: [
+      path.join(node_dir, 'normalize-scss', 'sass'),
+      path.join(node_dir, 'normalize-scss', 'node_modules', 'support-for', 'sass')]
   },
 
   devServer: {
