@@ -22,7 +22,7 @@ module.exports = {
     loaders: [
       {
         test: /\.scss$/,
-        loaders: ["style", "css?sourceMap", "sass?sourceMap"],
+        loaders: ["style", "css?sourceMap", "autoprefixer-loader?browsers=last 4 version", "sass?sourceMap"],
         include: PATHS.app
       }
     ]
