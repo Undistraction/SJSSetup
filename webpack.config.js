@@ -8,7 +8,17 @@ const PATHS = {
   build: path.join(__dirname, 'build')
 };
 
-module.exports = {
+var node_dir = path.join(__dirname, 'node_modules');
+
+var config = {
+
+  addVendor: function (name, path) {
+    this.resolve.alias[name] = path;
+    this.module.noParse.push(new RegExp(path));
+  },
+
+  resolve: { alias: {} },
+
   entry: PATHS.app,
 
   output: {
@@ -19,6 +29,7 @@ module.exports = {
   devtool: 'inline-source-map',
 
   module: {
+    noParse: [],
     loaders: [
       {
         test: /\.scss$/,
@@ -26,6 +37,10 @@ module.exports = {
         include: PATHS.app
       }
     ]
+  },
+
+  sassLoader: {
+    includePaths: [path.join(node_dir, 'normalize-scss', 'sass'), path.join(node_dir, 'normalize-scss', 'node_modules', 'support-for', 'sass')]
   },
 
   devServer: {
@@ -46,5 +61,8 @@ module.exports = {
       title: 'Kanban app'
     })
   ]
+};
 
-}
+config.addVendor('normalize-scss', path.join(node_dir, 'normalize-scss', 'sass'));
+
+module.exports = config;
