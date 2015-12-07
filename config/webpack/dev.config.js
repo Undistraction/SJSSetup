@@ -19,10 +19,13 @@ var config = {
     this.module.noParse.push(new RegExp(path));
   },
 
-  resolve: { alias: {} },
+  resolve: {
+    alias: {},
+    extensions: ['', '.js', '.jsx']
+  },
 
   entry: PATHS.app,
-
+  
   output: {
     path: PATHS.build,
     filename: 'bundle.js'
