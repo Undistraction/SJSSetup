@@ -3,12 +3,14 @@ var webpack = require('webpack');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
 require('es6-promise').polyfill();
 
+const rootDir = path.join(__dirname, '../', '../');
+
 const PATHS = {
-  app: path.join(__dirname, 'app'),
-  build: path.join(__dirname, 'build')
+  app: path.join(rootDir, 'app'),
+  build: path.join(rootDir, 'build')
 };
 
-var node_dir = path.join(__dirname, 'node_modules');
+var node_dir = path.join(rootDir, 'node_modules');
 
 var config = {
 
@@ -35,6 +37,11 @@ var config = {
         test: /\.scss$/,
         loaders: ["style", "css?sourceMap", "autoprefixer-loader?browsers=last 4 version", "sass?sourceMap"],
         include: PATHS.app
+      },
+      {
+        test: /\.jsx?$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel'
       }
     ]
   },
