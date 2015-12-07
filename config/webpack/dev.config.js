@@ -40,8 +40,8 @@ var config = {
       },
       {
         test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components)/,
-        loader: 'babel'
+        loaders: ['babel', 'eslint'],
+        include: PATHS.app
       }
     ]
   },
